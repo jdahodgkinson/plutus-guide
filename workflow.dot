@@ -1,0 +1,7 @@
+digraph contract_workflow {
+    node [shape = none];
+    "Define datum" -> "Write validator function";
+    "Define redeemer" -> "Write validator function";
+    "Write validator function" -> "Make TypedValidator";
+
+}
