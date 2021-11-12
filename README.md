@@ -1,4 +1,3 @@
-Jack's Plutus Guide
-===================
+# Jack's Plutus Guide
 
 A collection of Markdown files, recording my knowledge of Plutus.

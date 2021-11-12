@@ -3,5 +3,7 @@ digraph contract_workflow {
     "Define datum" -> "Write validator function";
     "Define redeemer" -> "Write validator function";
     "Write validator function" -> "Make TypedValidator";
-
+    "Make TypedValidator" -> "Write contract";
+    "Define schema" -> "Write contract";
+    "Write minting policy" -> "Write contract";
 }
