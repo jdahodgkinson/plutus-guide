@@ -1,9 +1,9 @@
 # Constraints and Lookups
 
-## Lookup Table
+Lookup Table
 
 | TxConstraints i o              | ScriptLookups a         |
-|--------------------------------|-------------------------|
+| ------------------------------ | ----------------------- |
 | `mustPayToTheScript`           | `typedValidatorLookups` |
 | `mustPayToPubKey`              | `unspentOutputs`        |
 | `mustMintCurrency`             | `mintingPolicy`         |
@@ -11,10 +11,10 @@
 | `mustMintValue`                | `otherData`             |
 | `mustMintValueWithRedeemer`    | `ownPubKeyHash`         |
 | `mustSpendAtLeast`             | `pubKey`                |
-| `mustSpendPubKeyOutput`        |
-| `mustSpendScriptOutput`        |
-| `mustValidateIn`               |
-| `mustBeSignedBy`               |
-| `mustIncludeDatum`             |
-| `mustPayToOtherScript`         |
-| `mustHashDatum`                |
+| `mustSpendPubKeyOutput`        |                         |
+| `mustSpendScriptOutput`        |                         |
+| `mustValidateIn`               |                         |
+| `mustBeSignedBy`               |                         |
+| `mustIncludeDatum`             |                         |
+| `mustPayToOtherScript`         |                         |
+| `mustHashDatum`                |                         |

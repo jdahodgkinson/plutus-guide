@@ -1,28 +1,24 @@
 # Contracts
 
-Plutus's `Contract` monad is used to define off-chain code, which
-runs in one's wallet. It takes four parameters: `Contract w s e a
-`, where:
+Plutus's `Contract` monad is used to define off-chain code, which runs in one's
+wallet. It takes four parameters: `Contract w s e a`, where:
 
 `w` is a writer, which allows us to log messages.
 
-`s` is the `Contract`'s "schema", which defines what its
-capabilities are.
+`s` is the `Contract`'s "schema", which defines what its capabilities are.
 
-`e` defines the type of error messages produced by the `Contract`
-n.b. `Text` is usually a good choice.
+`e` defines the type of error messages produced by the `Contract` n.b. `Text` is
+usually a good choice.
 
 `a` is the result type of the computation n.b. consider `Maybe a`.
 
-It is important to remember that anyone can make their own
-off-chain interfaces, so any undesired behaviour should be
-prevented by the on-chain *Validator*.
+It is important to remember that anyone can make their own off-chain interfaces,
+so any undesired behaviour should be prevented by the on-chain _Validator_.
 
 ## Defining behaviour
 
-How a `Contract` should behave, is defined by a series of
-constraints. Functions in `Plutus.Contract` to define a
-`Contract`'s behaviour include:
+How a `Contract` should behave, is defined by a series of constraints. Functions
+in `Plutus.Contract` to define a `Contract`'s behaviour include:
 
 ```haskell
 submitTxConstraints :: 
@@ -36,20 +32,19 @@ submitTxConstraintsWith ::
   Contract w s e Tx
 ```
 
-*Validators* are covered in `validators.md` but `TxConstraints`
-and `ScriptLookups` are new to us and off-chain. They are both
-located in `Ledger.Constraints`.
+_Validators_ are covered in `validators.md` but `TxConstraints` and
+`ScriptLookups` are new to us and off-chain. They are both located in
+`Ledger.Constraints`.
 
 ## TxConstraints
 
-`Ledger.Constraints` exports `TxConstraints i o`. `TxConstraints`
-is a list of constraints on transactions. They are constructed by
-the library functions listed below.
+`Ledger.Constraints` exports `TxConstraints i o`. `TxConstraints` is a list of
+constraints on transactions. They are constructed by the library functions
+listed below.
 
 As can be seen by the above functions, `i :: RedeemerType a` and
-`o :: DatumType a`, so when considering the library functions
-listed below, remember: see `i`, think *redeemer*, see `o`, think
-*datum*.
+`o :: DatumType a`, so when considering the library functions listed below,
+remember: see `i`, think _redeemer_, see `o`, think _datum_.
 
 ```haskell
 mustPayToTheScript :: o -> Value -> TxConstraints i o
@@ -94,17 +89,16 @@ mustPayToOtherScript ::
   Value ->
   TxConstraints i o 
 
-mustHashDatum :: DatumHash -> Datum -> TxConstraints i o 
+mustHashDatum :: DatumHash -> Datum -> TxConstraints i o
 ```
 
 ## ScriptLookups
 
-`ScriptLookups` is a data type that encapsulates information our
-off-chain script will use that belongs *to other scripts*.
+`ScriptLookups` is a data type that encapsulates information our off-chain
+script will use that belongs _to other scripts_.
 
-A value of type `ScriptLookups` is, similarly to `TxConstraints`,
-constructed with the use of library functions included in
-`Ledger.Constraints`:
+A value of type `ScriptLookups` is, similarly to `TxConstraints`, constructed
+with the use of library functions included in `Ledger.Constraints`:
 
 ```haskell
 typedValidatorLookups :: TypedValidator a -> ScriptLookups a 
@@ -119,5 +113,5 @@ otherData :: Datum -> ScriptLookups a
 
 ownPubKeyHash :: PubKeyHash -> ScriptLookups a 
 
-pubKey :: PubKey -> ScriptLookups a 
+pubKey :: PubKey -> ScriptLookups a
 ```
